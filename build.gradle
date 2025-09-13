@@ -1,0 +1,32 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.+'
+}
+
+group = 'com.ahmad.bigwaves'
+version = '1.0'
+archivesBaseName = 'bigwaves'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                bigwaves {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.1.3'
+}
